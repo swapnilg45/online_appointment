@@ -18,7 +18,10 @@ class Appointment(Document):
 			pass
 		else:
 			frappe.throw("Please enter a valid contact number")
-
+		validate_appointment(self)
+		
+	def on_update_after_submit(self):
+		validate_appointment(self)
 
 	def after_insert(self):
 		self.queue_number = self.add_to_appointment_queue()
@@ -62,3 +65,35 @@ class Appointment(Document):
 			),
 			to=self.contact_number,
 		)
+
+
+def validate_appointment(self):
+	appointment_date = datetime.strptime(self.date, '%Y-%m-%d').date()
+	min_allowed_date = appointment_date - timedelta(days=3)
+	max_allowed_date = appointment_date + timedelta(days=3)
+
+	if frappe.db.exists(
+		"Appointment",{
+			'patient_name': self.patient_name,
+			"date":["between", [min_allowed_date, max_allowed_date]],
+			"name":['!=', self.name] if self.name else None
+		}
+	):
+		frappe.throw(f"Patient cannot have apointment 3 days before or after")
+
+@frappe.whitelist()
+def validate_reshedule(app_name, clinic, date):
+	queue_doc = frappe.db.get_value("Appointment Queue", {
+		"date": date,
+		"clinic": clinic
+	})
+	frappe.logger("utils").exception(queue_doc)
+	if queue_doc:
+		queue_count = frappe.db.get_list("Appointment Queue Item", {"parent": queue_doc})
+		if len(queue_count) >= 4:
+			frappe.throw("Queue Is Full")
+	app_doc = frappe.get_doc("Appointment", app_name)
+	app_doc.date = date
+	app_doc.queue_number = app_doc.add_to_appointment_queue()
+	app_doc.save(ignore_permissions=True)
+	return True
