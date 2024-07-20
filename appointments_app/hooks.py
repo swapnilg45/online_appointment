@@ -122,11 +122,11 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-doc_events = {
-	"User": {
-		"before_save": "appointments_app.appointments_app.doc_events.user.before_save",
-	}
-}
+# doc_events = {
+# 	"User": {
+# 		"before_save": "appointments_app.appointments_app.doc_events.user.before_save",
+# 	}
+# }
 
 # Scheduled Tasks
 # ---------------
@@ -225,9 +225,9 @@ doc_events = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
-fixtures = [
-    {
-        "dt": "Custom Field",
-        "filters": [["module", "in", ["Appointments App"]]]
-    }
-]
+# fixtures = [
+#     {
+#         "dt": "Custom Field",
+#         "filters": [["module", "in", ["Appointments App"]]]
+#     }
+# ]

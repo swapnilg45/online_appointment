@@ -3,7 +3,7 @@
 
 # import frappe
 from frappe.model.document import Document
-from datetime import datetime, timedelta
 
-class AppointmentQueue(Document):
+
+class DoctorShift(Document):
 	pass

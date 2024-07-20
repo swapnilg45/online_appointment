@@ -14,8 +14,7 @@
   "column_break_moxe",
   "date",
   "queue_number",
-  "amended_from",
-  "queue"
+  "amended_from"
  ],
  "fields": [
   {
@@ -69,12 +68,6 @@
    "options": "Schedule Shift"
   },
   {
-   "fieldname": "queue",
-   "fieldtype": "Table",
-   "label": "Queue",
-   "options": "Appointment Queue Item"
-  },
-  {
    "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
@@ -85,7 +78,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-18 16:02:13.944608",
+ "modified": "2024-07-20 17:03:17.426763",
  "modified_by": "Administrator",
  "module": "Appointments App",
  "name": "Appointment",

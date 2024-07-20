@@ -12,7 +12,7 @@ def get_twilio_client():
 
     return Client(account_sid, auth_token)
 
-# From -> "+18149047351"
+
 
 def send_message(body, from_, to_):
     client = get_twilio_client()

@@ -1,6 +1,6 @@
 import frappe
 from frappe.model.document import Document
-
+from datetime import datetime, timedelta
 
 class Appointment(Document):
 	def validate(self):
@@ -15,14 +15,18 @@ class Appointment(Document):
 		else:
 			frappe.throw("Please enter a valid contact number")
 
+
+		# validate if appointm,ent is present
+		# validate_appointment(self)
+
 	def after_insert(self):
 		self.queue_number = self.add_to_appointment_queue()
-		# attach csrf token + queue number as key and queue number as value
 		frappe.cache.set_value(f"{frappe.session.sid}:queue_number", self.queue_number)
 		self.save(ignore_permissions=True)
 		self.send_confirmation_message()
 
 	def add_to_appointment_queue(self):
+		# Validate a function if appointment is present or not
 		filters = {
 			"date": self.date,
 			"shift": self.shift,
@@ -34,7 +38,9 @@ class Appointment(Document):
 		)
 
 		if appointment_queue_exists:
+			
 			q = frappe.get_doc("Appointment Queue", filters)
+			
 		else:
 			q = frappe.new_doc("Appointment Queue")
 			q.update(filters)
@@ -57,4 +63,37 @@ class Appointment(Document):
 			),
 			to_=self.contact_number,
 		)
-		
+
+def validate_appointment(self):
+	appointment_date = datetime.strptime(self.date, '%Y-%m-%d').date()
+	min_allowed_date = appointment_date - timedelta(days=3)
+	max_allowed_date = appointment_date + timedelta(days=3)
+
+	if frappe.db.exists(
+		"Appointment",{
+			'patient_name': self.patient_name,
+			"date":["between", [min_allowed_date, max_allowed_date]],
+			"name":['!=', self.name] if self.name else None
+		}
+	):
+		frappe.throw(f"Patient cannot have apointment 3 days before or after")
+	
+# appointments_app/doctype/appointment/appointment.py
+@frappe.whitelist()
+def validate_reshedule(app_name, clinic, date):
+	queue_doc = frappe.db.get_value("Appointment Queue", {
+		"date": date,
+		"clinic": clinic
+	})
+	if queue_doc:
+		queue_count = frappe.db.count("Appointment Queue Item", {"parent": queue_doc})
+		if queue_count >= 4:
+			frappe.throw("QueueIs Full")
+		else:
+			frappe.db.set_value("Appointment", app_name, "date", date)
+			frappe.db.commit()
+			# app_doc = frappe.get_doc("Appointment", app_name)
+			# app_doc.date = date
+			# app_doc.save()
+			return {}
+	

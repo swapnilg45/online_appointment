@@ -1,34 +1,31 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2024-07-15 18:26:47.900892",
+ "creation": "2024-07-15 18:11:55.181809",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "appointment",
-  "select_wumk"
+  "start_time",
+  "end_time"
  ],
  "fields": [
   {
-   "fieldname": "appointment",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Appointment",
-   "options": "Appointment"
+   "fieldname": "start_time",
+   "fieldtype": "Time",
+   "label": "Start Time"
   },
   {
-   "fieldname": "select_wumk",
-   "fieldtype": "Select",
-   "label": "Status",
-   "options": "Pending\nOngoing\nCancelled\nAbsent\nCompleted"
+   "fieldname": "end_time",
+   "fieldtype": "Time",
+   "label": "End Time"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-15 18:29:46.218587",
+ "modified": "2024-07-15 18:22:22.132283",
  "modified_by": "Administrator",
  "module": "Appointments App",
- "name": "Appointment Queue Item",
+ "name": "Doctor Shift",
  "owner": "Administrator",
  "permissions": [
   {
