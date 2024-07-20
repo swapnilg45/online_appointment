@@ -10,8 +10,9 @@
 <p>{{ doc.contact_number }}</p>
 
 {% set doctor = frappe.get_doc("Doctor", doc.doctor) %}
-<p><strong>Doctor</strong> <span id="status-badge" class="badge badge-{{ 'success' if doc.doctor_in else 'secondary' }}">{{ 'IN' if doc.doctor_in else 'OUT' }}</span></p>
-<p>{{ doctor.full_name }}, {{ doctor.specialty }}</p>
+<p><strong>Doctor</strong> <span id="status-badge" class="badge badge-{{'success' if doc.doctor_in else 'secondary'}}">{{ 'IN' if doc.doctor_in else 'OUT'}}</span></p>
+<p>{{ doctor.full_name }}, {{ doctor.speciality }}</p>
+
 
 <p><strong>Timings</strong></p>
 
@@ -23,23 +24,23 @@
     {% endfor %}
 </ul>
 
-<a href="/book-appointment/new?clinic={{ doc.name }}" class="btn btn-primary">Book Appointment</a>
+<a href="/book-appointment/new?clinic={{doc.name}}" class="btn btn-primary">Book Appointment</a>
 {% endblock %}
 
 {% block script %}
 <script>
     frappe.ready(() => {
         frappe.realtime.on("doctor_status_changed", (data) => {
-            console.log(data);
-            if (data.clinic === "{{ doc.name }}") {  // Check if the update is for the current clinic
+            if (data.clinic == "Kale Nursing Home") {
                 if (data.updated_status == "IN") {
-
-                    $("#status-badge").removeClass("badge-secondary").addClass("badge-success").text("IN");
+                    $("#status-badge").removeClass("badge-secondary").addClass("badge-success").text("IN")
                 } else {
-                    $("#status-badge").removeClass("badge-success").addClass("badge-secondary").text("OUT");
+                    $("#status-badge").removeClass("badge-success").addClass("badge-secondary").text("OUT")
                 }
             }
         })
-    });
+    })
 </script>
 {% endblock %}
+
+<!-- this is a sample default web page template -->

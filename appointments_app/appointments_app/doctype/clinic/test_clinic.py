@@ -1,4 +1,4 @@
-# Copyright (c) 2024, os and Contributors
+# Copyright (c) 2023, Build With Hussain and Contributors
 # See license.txt
 
 # import frappe

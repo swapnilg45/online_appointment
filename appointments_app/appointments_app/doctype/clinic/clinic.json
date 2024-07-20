@@ -3,17 +3,20 @@
  "allow_guest_to_view": 1,
  "allow_rename": 1,
  "autoname": "prompt",
- "creation": "2024-06-18 10:20:20.802464",
+ "creation": "2023-07-12 14:58:42.050090",
+ "default_view": "List",
  "doctype": "DocType",
+ "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "doctor",
   "contact_number",
   "route",
-  "column_break_lzic",
+  "column_break_ypgz",
   "is_published",
   "doctor_in",
-  "address"
+  "address",
+  "clinic_image"
  ],
  "fields": [
   {
@@ -29,18 +32,18 @@
    "label": "Address"
   },
   {
-   "fieldname": "route",
-   "fieldtype": "Data",
-   "label": "Route"
-  },
-  {
    "default": "0",
    "fieldname": "is_published",
    "fieldtype": "Check",
    "label": "Is Published"
   },
   {
-   "fieldname": "column_break_lzic",
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  },
+  {
+   "fieldname": "column_break_ypgz",
    "fieldtype": "Column Break"
   },
   {
@@ -54,14 +57,26 @@
    "default": "0",
    "fieldname": "doctor_in",
    "fieldtype": "Check",
-   "label": "Doctor in"
+   "label": "Doctor In"
+  },
+  {
+   "fieldname": "clinic_image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Clinic Image"
   }
  ],
  "has_web_view": 1,
+ "image_field": "clinic_image",
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
- "links": [],
- "modified": "2024-06-20 12:15:20.155472",
+ "links": [
+  {
+   "link_doctype": "Schedule Shift",
+   "link_fieldname": "clinic"
+  }
+ ],
+ "modified": "2023-08-02 23:20:26.105887",
  "modified_by": "Administrator",
  "module": "Appointments App",
  "name": "Clinic",
@@ -82,7 +97,8 @@
   }
  ],
  "route": "clinics",
- "sort_field": "creation",
+ "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

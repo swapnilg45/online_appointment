@@ -1,18 +1,18 @@
 {
  "actions": [],
- "autoname": "field:first_name",
- "creation": "2024-06-18 10:31:51.105858",
+ "autoname": "autoincrement",
+ "creation": "2023-07-12 15:08:08.164967",
+ "default_view": "List",
  "doctype": "DocType",
+ "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "first_name",
-  "last_name",
   "full_name",
-  "column_break_klkz",
   "qualifications",
-  "specialty",
-  "section_break_tnvv",
-  "shifts"
+  "column_break_uhig",
+  "last_name",
+  "speciality"
  ],
  "fields": [
   {
@@ -20,19 +20,18 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "First Name",
-   "reqd": 1,
-   "unique": 1
+   "reqd": 1
   },
   {
    "fieldname": "last_name",
    "fieldtype": "Data",
-   "label": "Last Name",
-   "unique": 1
+   "label": "Last Name"
   },
   {
    "fieldname": "full_name",
    "fieldtype": "Data",
    "label": "Full Name",
+   "read_only": 1,
    "unique": 1
   },
   {
@@ -41,34 +40,24 @@
    "label": "Qualifications"
   },
   {
-   "fieldname": "specialty",
+   "fieldname": "speciality",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Specialty ",
+   "label": "Speciality",
    "reqd": 1
   },
   {
-   "fieldname": "shifts",
-   "fieldtype": "Table",
-   "label": "Shifts",
-   "options": "Doctor Shift"
-  },
-  {
-   "fieldname": "column_break_klkz",
+   "fieldname": "column_break_uhig",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_tnvv",
-   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-12 17:18:33.577027",
+ "modified": "2023-07-12 15:45:57.246411",
  "modified_by": "Administrator",
  "module": "Appointments App",
  "name": "Doctor",
- "naming_rule": "By fieldname",
+ "naming_rule": "Autoincrement",
  "owner": "Administrator",
  "permissions": [
   {
@@ -85,7 +74,7 @@
   }
  ],
  "show_title_field_in_link": 1,
- "sort_field": "creation",
+ "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
  "title_field": "full_name"

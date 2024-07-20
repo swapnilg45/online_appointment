@@ -1,8 +1,10 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2024-06-18 12:21:52.201438",
+ "creation": "2023-07-12 15:44:21.894529",
+ "default_view": "List",
  "doctype": "DocType",
+ "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "start_time",
@@ -22,7 +24,7 @@
    "fieldname": "end_time",
    "fieldtype": "Time",
    "in_list_view": 1,
-   "label": "End TIme",
+   "label": "End Time",
    "reqd": 1
   },
   {
@@ -33,7 +35,6 @@
   {
    "fieldname": "clinic",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Clinic",
    "options": "Clinic",
    "reqd": 1
@@ -41,7 +42,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-06-18 15:00:42.221018",
+ "modified": "2023-07-12 16:04:30.150148",
  "modified_by": "Administrator",
  "module": "Appointments App",
  "name": "Schedule Shift",
@@ -61,7 +62,7 @@
   }
  ],
  "show_title_field_in_link": 1,
- "sort_field": "creation",
+ "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
  "title_field": "title"

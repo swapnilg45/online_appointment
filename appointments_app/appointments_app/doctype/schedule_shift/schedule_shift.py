@@ -1,13 +1,14 @@
-# Copyright (c) 2024, os and contributors
+# Copyright (c) 2023, Build With Hussain and contributors
 # For license information, please see license.txt
 
 # import frappe
 from frappe.model.document import Document
+from frappe.utils import format_time
 
 
 class ScheduleShift(Document):
 	def before_save(self):
-		self.set_title()
-	
-	def set_title(self):
-		self.title = f'{self.start_time}-{self.end_time}'
+		# set the title field to "start_time-end_time"
+		self.title = (
+			format_time(self.start_time, "HH:mm") + "-" + format_time(self.end_time, "HH:mm")
+		)

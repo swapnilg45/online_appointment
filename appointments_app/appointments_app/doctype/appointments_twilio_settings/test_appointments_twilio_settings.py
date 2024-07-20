@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestDoctor(FrappeTestCase):
+class TestAppointmentsTwilioSettings(FrappeTestCase):
 	pass

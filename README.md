@@ -1,12 +1,11 @@
-# Appointments App
+## Appointments App
 
-This is an appointment app built using the Frappe framework, designed to facilitate easy booking and management of appointments.
+Appointment Web Portal
 
-## Installation
+## Built Live on Build With Hussain
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+[Livestream Link](https://www.youtube.com/live/VbJGCyCDeXE?feature=share)
 
-```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch main
-bench install-app appointments_app
+#### License
+
+AGPL 3.0

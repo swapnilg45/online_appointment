@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class DoctorShift(Document):
+class AppointmentsSMSLog(Document):
 	pass

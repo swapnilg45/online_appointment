@@ -1,8 +1,10 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2024-06-18 15:23:33.515246",
+ "creation": "2023-07-12 16:24:46.262358",
+ "default_view": "List",
  "doctype": "DocType",
+ "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "date",
@@ -14,19 +16,25 @@
   {
    "fieldname": "date",
    "fieldtype": "Date",
-   "label": "Date"
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
   },
   {
    "fieldname": "clinic",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Clinic",
-   "options": "Clinic"
+   "options": "Clinic",
+   "reqd": 1
   },
   {
    "fieldname": "shift",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Shift",
-   "options": "Schedule Shift"
+   "options": "Schedule Shift",
+   "reqd": 1
   },
   {
    "fieldname": "queue",
@@ -37,7 +45,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-06-18 15:27:52.299595",
+ "modified": "2023-07-12 16:26:26.257415",
  "modified_by": "Administrator",
  "module": "Appointments App",
  "name": "Appointment Queue",
@@ -56,7 +64,7 @@
    "write": 1
   }
  ],
- "sort_field": "creation",
+ "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
  "track_changes": 1,

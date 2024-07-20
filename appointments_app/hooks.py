@@ -1,9 +1,15 @@
 app_name = "appointments_app"
 app_title = "Appointments App"
-app_publisher = "os"
-app_description = "this is an appointment app"
-app_email = "swapnil.ghadi066@gmail.com"
-app_license = "mit"
+app_publisher = "Build With Hussain"
+app_description = "Appointment Web Portal"
+app_email = "hussain@frappe.io"
+app_license = "AGPL 3.0"
+
+
+fixtures = [
+	{"dt": "Website Theme", "filters": {"name": "JDP Doctors"}},
+	{"dt": "Color", "filters": {"name": ("in", ["Cyan 100", "Cyan 400", "Cyan 500"])}},
+]
 # required_apps = []
 
 # Includes in <head>
@@ -28,15 +34,10 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"User" : "public/js/user.js"}
+# doctype_js = {"doctype" : "public/js/doctype.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
-
-# Svg Icons
-# ------------------
-# include app icons in desk
-# app_include_icons = "appointments_app/public/icons.svg"
 
 # Home Pages
 # ----------
@@ -68,7 +69,7 @@ app_license = "mit"
 # ------------
 
 # before_install = "appointments_app.install.before_install"
-# after_install = "appointments_app.install.after_install"
+after_install = "appointments_app.install.after_install"
 
 # Uninstallation
 # ------------
@@ -123,31 +124,21 @@ app_license = "mit"
 # Hook on document methods and events
 
 # doc_events = {
-# 	"User": {
-# 		"before_save": "appointments_app.appointments_app.doc_events.user.before_save",
+# 	"*": {
+# 		"on_update": "method",
+# 		"on_cancel": "method",
+# 		"on_trash": "method"
 # 	}
 # }
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"appointments_app.tasks.all"
-# 	],
-# 	"daily": [
-# 		"appointments_app.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"appointments_app.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"appointments_app.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"appointments_app.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"daily": [
+		"appointments_app.appointments_app.doctype.appointment_queue.appointment_queue.create_queues_for_today"
+	]
+}
 
 # Testing
 # -------
@@ -216,18 +207,4 @@ app_license = "mit"
 
 # auth_hooks = [
 # 	"appointments_app.auth.validate"
-# ]
-
-# Automatically update python controller files with type annotations for this app.
-# export_python_type_annotations = True
-
-# default_log_clearing_doctypes = {
-# 	"Logging DocType Name": 30  # days to retain logs
-# }
-
-# fixtures = [
-#     {
-#         "dt": "Custom Field",
-#         "filters": [["module", "in", ["Appointments App"]]]
-#     }
 # ]
